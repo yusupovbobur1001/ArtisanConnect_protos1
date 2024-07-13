@@ -96,12 +96,12 @@ message Filter {
 }
 
 message UsersInfo {
-    repeated GetUsers users = 1;
+    repeated GetUsers1 users = 1;
     int32 total = 2;
     Filter limitpage = 3;
 }
 
-message GetUsers {
+message GetUsers1 {
     string id = 1; 
     string user_name = 2;
     string full_name = 3;
