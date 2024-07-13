@@ -8,12 +8,16 @@ service Auth {
     rpc UpdateProfile          (UserUpdate)                  returns (GetProfile) {}
     rpc DeleteProfile          (Id)                  returns (Message)    {}
     rpc GetByIdProfile         (Id)                  returns (GetProfile)   {}
-    rpc GetAllProfil           (Filter)              returns (UsersInfo)  {}
+    rpc GetAllProfil           (Filter)              returns (UsersInfoS)  {}
     rpc ProfileUserType        (UserType)            returns (GetProfile) {}
     rpc UpdateProfilePassword  (RestoreProfile)      returns (Message)    {}
     rpc RefreshToken           (Refreshtoken)        returns (Tokens)     {}
     rpc ValidateUserId            (Id)               returns (Exists)     {}
 } 
+
+message UsersInfoS {
+    repeated UsersInfo userinfo = 1;
+}
 
 message UserUpdate {
     string user_name = 1;
