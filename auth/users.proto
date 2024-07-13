@@ -5,9 +5,6 @@ option go_package = "genproto/auth";
 package auth;
 
 service Auth {
-    rpc Register               (User)                returns (UserInfo)   {}
-    rpc Login                  (UserLogin)           returns (Tokens)     {}
-    rpc Loguot                 (Id)                  returns (Message)    {}
     rpc UpdateProfile          (Id)                  returns (GetProfile) {}
     rpc DeleteProfile          (Id)                  returns (Message)    {}
     rpc GetByIdProfile         (Id)                  returns (UserInfo)   {}
@@ -15,7 +12,7 @@ service Auth {
     rpc ProfileUserType        (UserType)            returns (GetProfile) {}
     rpc UpdateProfilePassword  (RestoreProfile)      returns (Message)    {}
     rpc RefreshToken           (Refreshtoken)        returns (Tokens)     {}
-    rpc ValidateUserId            (Id)                  returns (Exists)     {}
+    rpc ValidateUserId            (Id)               returns (Exists)     {}
 } 
 
 message Exists {
