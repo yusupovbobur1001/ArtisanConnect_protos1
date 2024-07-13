@@ -20,6 +20,9 @@ message Exists {
     bool exist = 1;
 }
 
+message Void {
+}
+
 message CreateProductRequest {
     string name = 1;
     string description = 2;
