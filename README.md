@@ -1,2 +1,0 @@
-
-# ArtisanConnect_protos1

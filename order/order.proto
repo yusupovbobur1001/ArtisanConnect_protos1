@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package orders;
+
+service OrderService {
+    rpc CreateOrder(CreateOrderRequest) returns (OrderInfo) {}
+    rpc CancelOrder(Id) returns (CancelOrder1) {}
+    rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (OrderInfo) {}
+    rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {}
+    rpc GetOrder(Id) returns (OrderInfo) {}
+    rpc PayOrder(PayOrderRequest) returns (PaymentInfo) {}
+    rpc GetPaymentStatus(GetPaymentStatusRequest) returns (PaymentInfo) {}
+    rpc UpdateShippingInfo(UpdateShippingInfoRequest) returns (ShippingInfo) {}
+    rpc ValidateOrderId (Id) returns (Exists) {}
+}
+
+message Exists {
+    bool exist = 1;
+}
+
+message CreateOrderRequest {
+    repeated OrderItem items = 1;
+    Address shipping_address = 2;
+}
+
+message CancelOrder1 {
+    string id = 1; 
+    string status = 2; 
+    string updated_at = 3;
+}
+
+message OrderInfo1 {
+    string id = 1;
+    string user_id = 2;
+    float total_amount = 3;
+    string status = 4;
+    string created_at = 5;
+}
+
+message OrderInfo {
+    string id = 1;
+    string user_id = 2;
+    repeated OrderItem items = 3;
+    float total_amount = 4;
+    string status = 5;
+    Address shipping_address = 6;
+    string created_at = 7;
+}
+
+message UpdateOrderStatusRequest {
+    string order_id = 1;
+    string status = 2;
+}
+
+message ListOrdersRequest {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message ListOrdersResponse {
+    repeated OrderInfo1 orders = 1;
+    int32 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message Id {
+    string order_id = 1;
+}
+
+message OrderItem {
+    string product_id = 1;
+    int32 quantity = 2;
+    float price = 3;
+}
+
+message PayOrderRequest {
+    string order_id = 1;
+    string payment_method = 2;
+    string card_number = 3;
+    string expiry_date = 4;
+    string cvv = 5;
+}
+
+message PaymentInfo {
+    string order_id = 1;
+    string payment_id = 2;
+    float amount = 3;
+    string status = 4;
+    string transaction_id = 5;
+    string created_at = 6;
+}
+
+message GetPaymentStatusRequest {
+    string order_id = 1;
+}
+
+message UpdateShippingInfoRequest {
+    string order_id = 1;
+    string tracking_number = 2;
+    string carrier = 3;
+    string estimated_delivery_date = 4;
+}
+
+message ShippingInfo {
+    string order_id = 1;
+    string tracking_number = 2;
+    string carrier = 3;
+    string estimated_delivery_date = 4;
+    string updated_at = 5;
+}
+
+
+
+
+message Address {
+    string street = 1;
+    string city = 2;
+    string country = 3;
+    string zip_code = 4;
+}

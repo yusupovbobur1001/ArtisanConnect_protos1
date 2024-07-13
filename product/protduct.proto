@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+option go_package = "genproto/proto";
+
+package products;
+
+service ProductService {
+    rpc CreateProduct(CreateProductRequest) returns (ProductInfo) {}
+    rpc UpdateProduct(UpdateProductRequest) returns (ProductInfo) {}
+    rpc DeleteProduct(Id) returns (DeleteProductResponse) {}
+    rpc ListProducts(ListProductsRequest) returns (ListProductsResponse) {}
+    rpc GetProduct(Id) returns (ProductInfo) {}
+    rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse) {}
+    rpc AddProductRating(AddProductRatingRequest) returns (RatingInfo) {}
+    rpc GetProductRatings(Id) returns (GetProductRatingsResponse) {}
+    rpc ValidateProductId(Id) returns (Exists) {}
+}
+
+message Exists {
+    bool exist = 1;
+}
+
+message CreateProductRequest {
+    string name = 1;
+    string description = 2;
+    float price = 3;
+    string category_id = 4;
+    int32 quantity = 5;
+}
+
+message ProductInfo {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    string category_id = 5;
+    int32 quantity = 6;
+    string artisan_id = 7;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+
+message UpdateProductRequest {
+    string product_id = 1;
+    string name = 2;
+    float price = 3;
+}
+
+message Id {
+    string product_id = 1;
+}
+
+message DeleteProductResponse {
+    string message = 1;
+}
+
+message ListProductsRequest {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+
+message ListProductsResponse {
+    repeated ProductInfo products = 1;
+    int32 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+
+message SearchProductsResponse {
+    repeated ProductInfo products = 1;
+    int32 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message AddProductRatingRequest {
+    string product_id = 1;
+    string user_id = 2;
+    float rating = 3;
+    string comment = 4;
+}
+
+
+message RatingInfo {
+    string id = 1;
+    string product_id = 2;
+    string user_id = 3;
+    float rating = 4;
+    string comment = 5;
+    string created_at = 6;
+}
+
+
+message GetProductRatingsResponse {
+    repeated RatingInfo ratings = 1;
+    float average_rating = 2;
+    int32 total_ratings = 3;
+}
+
+message SearchProductsRequest {
+    string query = 1;
+    string category = 2;
+    float min_price = 3;
+    float max_price = 4;
+    int32 page = 5;
+    int32 limit = 6;
+}
+
+
