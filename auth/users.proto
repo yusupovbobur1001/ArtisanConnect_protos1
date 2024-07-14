@@ -20,6 +20,7 @@ message UserUpdate {
     string full_name = 2;
     string user_type = 3;
     string bio = 4;
+    string id = 5;
 }
 
 message Exists {
