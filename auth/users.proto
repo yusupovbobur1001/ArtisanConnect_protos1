@@ -7,7 +7,7 @@ package auth;
 service Auth {
     rpc UpdateProfile          (UserUpdate)                  returns (GetProfile) {}
     rpc DeleteProfile          (Id)                  returns (Message)    {}
-    rpc GetByIdProfile         (Id)                  returns (UsersInfo)   {}
+    rpc GetByIdProfile         (Id)                  returns (GetProfile)   {}
     rpc GetAllProfil           (Filter)              returns (UsersInfo)  {}
     rpc ProfileUserType        (UserType)            returns (GetProfile) {}
     rpc UpdateProfilePassword  (RestoreProfile)      returns (Message)    {}
