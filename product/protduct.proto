@@ -49,6 +49,7 @@ message UpdateProductRequest {
     string product_id = 1;
     string name = 2;
     float price = 3;
+    string id = 4;
 }
 
 message Id {
