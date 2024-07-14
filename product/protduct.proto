@@ -13,7 +13,7 @@ service ProductService {
     rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse) {}
     rpc AddProductRating(AddProductRatingRequest) returns (RatingInfo) {}
     rpc GetProductRatings(Id) returns (GetProductRatingsResponse) {}
-    rpc ValidateProductId(Id) returns (Exists) {}
+    // rpc ValidateProductId(Id) returns (Exists) {}
 }
 
 message Exists {
@@ -29,6 +29,7 @@ message CreateProductRequest {
     float price = 3;
     string category_id = 4;
     int32 quantity = 5;
+    string artisan_id = 6;
 }
 
 message ProductInfo {
