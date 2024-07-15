@@ -7,13 +7,19 @@ package orders;
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (OrderInfo) {}
     rpc CancelOrder(Id) returns (CancelOrder1) {}
-    rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (OrderInfo) {}
+    rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (UpdateOrderRespons) {}
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {}
     rpc GetOrder(Id) returns (OrderInfo) {}
     rpc PayOrder(PayOrderRequest) returns (PaymentInfo) {}
     rpc GetPaymentStatus(GetPaymentStatusRequest) returns (PaymentInfo) {}
     rpc UpdateShippingInfo(UpdateShippingInfoRequest) returns (ShippingInfo) {}
     rpc ValidateOrderId (Id) returns (Exists) {}
+}
+
+message UpdateOrderRespons {
+    string order_id = 1;
+    string status = 2;
+    string updated_at = 3;
 }
 
 message Exists {
@@ -120,4 +126,5 @@ message Address {
     string city = 2;
     string country = 3;
     string zip_code = 4;
+    string user_id = 5;
 }
