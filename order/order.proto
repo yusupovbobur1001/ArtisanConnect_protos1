@@ -7,7 +7,7 @@ package orders;
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (OrderInfo) {}
     rpc CancelOrder(Id) returns (CancelOrder1) {}
-    rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (UpdateOrderRespons) {}
+    rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (UpdateOrderRespons1) {} //55555555555555
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {}
     rpc GetOrder(Id) returns (OrderInfo) {}
     rpc PayOrder(PayOrderRequest) returns (PaymentInfo) {}
@@ -16,7 +16,7 @@ service OrderService {
     rpc ValidateOrderId (Id) returns (Exists) {}
 }
 
-message UpdateOrderRespons {
+message UpdateOrderRespons1 {
     string order_id = 1;
     string status = 2;
     string updated_at = 3;
